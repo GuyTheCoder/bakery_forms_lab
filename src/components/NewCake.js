@@ -17,10 +17,43 @@ const NewCake = ({onSubmit}) => {
         setRating(event.target.value);
     }
 
+    const handleFormSubmission = (event) => {
+        event.preventDefault();
+    }
+
     const newCake = {
         name: name,
         ingredients: ingredients,
         rating: rating,
     }
     onSubmit(newCake)
-}
+
+    return (
+        <form onSubmit={handleFormSubmission}>
+            <label htmlFor="name">Name: </label>
+            <input 
+                type="text"
+                id="name"
+                onChange={handleNameChange}
+                
+            />
+            <label htmlFor="ingredients">Ingredients:</label>
+            <input 
+            type="text"
+            id="ingredients"
+            onChange={handleIngredientChange}
+    
+            />
+            <label htmlFor="rating">Rating:</label>
+            <input
+            type="number"
+            id="rating"
+            onChange={handleRatingChange}
+            />
+            <input type="submit" value="Add Cake"/>
+        </form>
+        );    
+    }
+
+    
+export default NewCake;
